@@ -6,6 +6,7 @@ namespace piMapper {
 DirectoryWatcher::DirectoryWatcher(std::string path, int watcherMediaType){
 	directoryPath = path;
 	_mediaType = watcherMediaType;
+	return;  // patch maz: no directory watch and no annoying logs
 
 	if(_mediaType == SourceType::SOURCE_TYPE_VIDEO){
 		_directory.allowExt("mp4");
@@ -57,7 +58,7 @@ int DirectoryWatcher::getMediaType(){
 
 void DirectoryWatcher::beginWatch(int intervalInMillis) {
 	watchInterval = intervalInMillis;
-	startThread();
+	//startThread();  // patch maz : no watching thread
 }
 
 void DirectoryWatcher::threadedFunction() {
